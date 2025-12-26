@@ -10,8 +10,8 @@ RUN rm -rf ./*
 # Step 4: Copy your local project files into the container
 COPY . .
 
-# Step 5: Expose port 80 to the outside world
-EXPOSE 80
+# Step 5: Expose port 8000 to the outside world
+EXPOSE 8000
 
 # Step 6: Start Nginx (This is already the default for the image)
 CMD ["nginx", "-g", "daemon off;"]
