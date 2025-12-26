@@ -11,7 +11,7 @@ RUN rm -rf ./*
 COPY . .
 
 # Step 5: Expose port 8000 to the outside world
-EXPOSE 8000
+EXPOSE 80
 
 # Step 6: Start Nginx (This is already the default for the image)
 CMD ["nginx", "-g", "daemon off;"]
