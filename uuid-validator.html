@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHG07DWSL8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YHG07DWSL8');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UUID Validator</title>
+    <link rel="icon" type="image/png" href="favicon.png" sizes="48x48">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Specific overrides for uuid validator page */
+        .container {
+            height: auto;
+            min-height: 80vh;
+            justify-content: center;
+        }
+
+        .editor-container {
+            flex: 0 1 auto;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .validation-result {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .valid {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .invalid {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .nav-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .nav-link a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav-link a:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+    </div>
+
+    <main class="container">
+        <nav class="site-nav">
+            <a href="index.html" class="nav-brand">
+                <img src="favicon.png" alt="DevUtils" width="32" height="32">
+            </a>
+            <div class="nav-divider"></div>
+
+            <div class="nav-group">
+                <button class="dropbtn">
+                    JSON
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
+                <div class="dropdown-content">
+                    <a href="json-beautifier.html">Beautifier</a>
+                    <a href="json-formatter.html">Formatter</a>
+                    <a href="json-escape.html">Escape</a>
+                    <a href="json-unescape.html">Unescape</a>
+                </div>
+            </div>
+
+            <div class="nav-divider"></div>
+
+            <div class="nav-group">
+                <button class="dropbtn">
+                    UUID
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
+                <div class="dropdown-content">
+                    <a href="uuid-generator.html">Generator</a>
+                    <a href="uuid-validator.html" class="active">Validator</a>
+                </div>
+            </div>
+        </nav>
+
+        <header>
+            <h1>UUID <span class="gradient-text">Validator</span></h1>
+            <p>Validate standard UUIDs instantly.</p>
+        </header>
+
+        <div class="editor-container">
+            <!-- Validator Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="label">Validate UUID</span>
+                </div>
+                <!-- Inline style for textarea min-height can be adjusted or kept consistent with CSS -->
+                <textarea id="uuid-input" placeholder="Paste a UUID here to validate..."></textarea>
+                <div class="controls" style="padding: 1rem;">
+                    <button id="validate-btn" class="secondary-btn">
+                        Validate
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </button>
+                    <div id="validation-result" class="validation-result" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <script src="js/uuid-validator.js"></script>
+</body>
+
+</html>
