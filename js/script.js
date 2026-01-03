@@ -8,14 +8,49 @@ const clearBtn = document.getElementById('clear-btn');
 const copyBtn = document.getElementById('copy-btn');
 const toast = document.getElementById('toast');
 
-beautifyBtn.addEventListener('click', () => processJSON(2));
-minifyBtn.addEventListener('click', () => processJSON(0));
+// Update active state visual
+function updateActiveButton(clickedBtn) {
+    const buttons = [beautifyBtn, minifyBtn, escapeBtn, unescapeBtn];
+    buttons.forEach(btn => {
+        if (btn) {
+            btn.classList.remove('primary-btn');
+            btn.classList.add('secondary-btn');
+        }
+    });
+    if (clickedBtn) {
+        clickedBtn.classList.remove('secondary-btn');
+        clickedBtn.classList.add('primary-btn');
+    }
+}
+
+beautifyBtn.addEventListener('click', () => {
+    updateActiveButton(beautifyBtn);
+    processJSON(2);
+});
+
+minifyBtn.addEventListener('click', () => {
+    updateActiveButton(minifyBtn);
+    processJSON(0);
+});
+
 clearBtn.addEventListener('click', () => {
     jsonInput.value = '';
     jsonOutput.innerHTML = '';
 });
-if (escapeBtn) escapeBtn.addEventListener('click', escapeJSON);
-if (unescapeBtn) unescapeBtn.addEventListener('click', unescapeJSON);
+
+if (escapeBtn) {
+    escapeBtn.addEventListener('click', () => {
+        updateActiveButton(escapeBtn);
+        escapeJSON();
+    });
+}
+
+if (unescapeBtn) {
+    unescapeBtn.addEventListener('click', () => {
+        updateActiveButton(unescapeBtn);
+        unescapeJSON();
+    });
+}
 copyBtn.addEventListener('click', copyToClipboard);
 
 function processJSON(indent) {
@@ -69,14 +104,29 @@ function unescapeJSON() {
 
     try {
         let unescaped;
+        let isDirectlyParsed = false;
+        let parsedDirectly;
 
-        if (raw.startsWith('"') && raw.endsWith('"')) {
-            unescaped = JSON.parse(raw);
+        try {
+            parsedDirectly = JSON.parse(raw);
+            isDirectlyParsed = true;
+        } catch (e) {
+            // Ignore syntax error, it might be an implicit string (e.g. inner content without quotes)
+        }
+
+        if (isDirectlyParsed) {
+            if (typeof parsedDirectly !== 'string') {
+                jsonOutput.innerHTML = `<span class="error">Error: Input is already valid JSON (not escaped).</span>`;
+                return;
+            }
+            unescaped = parsedDirectly;
         } else {
+            // Try fallback wrapping in quotes if strict parse failed
             try {
                 unescaped = JSON.parse(`"${raw}"`);
             } catch (e) {
-                unescaped = JSON.parse(raw); // Fallback
+                // If even wrapping fails, it's invalid
+                throw new Error("Invalid JSON string");
             }
         }
 
