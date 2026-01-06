@@ -167,6 +167,28 @@ header p {
     background: rgba(15, 23, 42, 0.4);
 }
 
+.editor-wrapper {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    position: relative;
+}
+
+.line-numbers {
+    width: 40px;
+    flex-shrink: 0;
+    text-align: right;
+    padding: 1rem 0.5rem;
+    color: var(--text-secondary);
+    background: rgba(15, 23, 42, 0.3);
+    border-right: 1px solid var(--panel-border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow: hidden;
+    user-select: none;
+}
+
 .label {
     font-weight: 600;
     color: var(--text-secondary);
@@ -202,18 +224,19 @@ textarea,
     border: none;
     color: var(--text-primary);
     padding: 1rem;
+    padding-left: 0.5rem;
+    /* Reduced left padding */
     font-family: 'JetBrains Mono', monospace;
     font-size: 14px;
     line-height: 1.5;
     resize: none;
     outline: none;
     overflow: auto;
+    white-space: pre !important;
+    /* Disable wrapping for line numbers alignment */
 }
 
-.output-area {
-    white-space: pre-wrap;
-    word-break: break-word;
-}
+
 
 textarea::placeholder {
     color: rgba(148, 163, 184, 0.4);

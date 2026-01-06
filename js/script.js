@@ -7,6 +7,8 @@ const unescapeBtn = document.getElementById('unescape-btn');
 const clearBtn = document.getElementById('clear-btn');
 const copyBtn = document.getElementById('copy-btn');
 const toast = document.getElementById('toast');
+const inputLineNumbers = document.getElementById('input-line-numbers');
+const outputLineNumbers = document.getElementById('output-line-numbers');
 
 // Update active state visual
 function updateActiveButton(clickedBtn) {
@@ -36,6 +38,8 @@ minifyBtn.addEventListener('click', () => {
 clearBtn.addEventListener('click', () => {
     jsonInput.value = '';
     jsonOutput.innerHTML = '';
+    updateLineNumbers(jsonInput, inputLineNumbers);
+    updateLineNumbers(jsonOutput, outputLineNumbers);
 });
 
 if (escapeBtn) {
@@ -75,6 +79,7 @@ function processJSON(indent) {
     } catch (e) {
         jsonOutput.innerHTML = `<span class="error">Error: ${e.message}</span>`;
     }
+    updateLineNumbers(jsonOutput, outputLineNumbers);
 }
 
 function escapeJSON() {
@@ -96,6 +101,7 @@ function escapeJSON() {
     } catch (e) {
         jsonOutput.innerHTML = `<span class="error">Error: ${e.message}</span>`;
     }
+    updateLineNumbers(jsonOutput, outputLineNumbers);
 }
 
 function unescapeJSON() {
@@ -140,6 +146,7 @@ function unescapeJSON() {
     } catch (e) {
         jsonOutput.innerHTML = `<span class="error">Error: ${e.message}</span>`;
     }
+    updateLineNumbers(jsonOutput, outputLineNumbers);
 }
 
 function syntaxHighlight(json) {
@@ -184,4 +191,39 @@ function showToast() {
     setTimeout(() => {
         toast.classList.add('hidden');
     }, 2000);
+}
+
+
+function updateLineNumbers(element, lineNumbersEle) {
+    if (!lineNumbersEle || !element) return;
+
+    // For textarea use value, for div use textContent
+    const val = element.value !== undefined ? element.value : element.textContent;
+    const lines = val.split(/\r\n|\r|\n/).length;
+
+    // Check if line count changed to avoid unnecessary DOM updates
+    if (lineNumbersEle.childElementCount === lines && lines > 0) return;
+
+    lineNumbersEle.innerHTML = Array(lines)
+        .fill(0)
+        .map((_, i) => `<div>${i + 1}</div>`)
+        .join('');
+}
+
+// Initial setup for line numbers
+if (jsonInput && inputLineNumbers) {
+    jsonInput.addEventListener('input', () => {
+        updateLineNumbers(jsonInput, inputLineNumbers);
+    });
+    jsonInput.addEventListener('scroll', () => {
+        inputLineNumbers.scrollTop = jsonInput.scrollTop;
+    });
+    // Init
+    updateLineNumbers(jsonInput, inputLineNumbers);
+}
+
+if (jsonOutput && outputLineNumbers) {
+    jsonOutput.addEventListener('scroll', () => {
+        outputLineNumbers.scrollTop = jsonOutput.scrollTop;
+    });
 }
