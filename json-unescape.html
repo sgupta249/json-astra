@@ -93,7 +93,10 @@
                         </button>
                     </div>
                 </div>
-                <textarea id="json-input" placeholder="Paste your raw JSON here..."></textarea>
+                <div class="editor-wrapper">
+                    <div class="line-numbers" id="input-line-numbers"></div>
+                    <textarea id="json-input" placeholder="Paste your raw JSON here..."></textarea>
+                </div>
             </div>
 
             <div class="controls">
@@ -148,7 +151,10 @@
                         </button>
                     </div>
                 </div>
-                <div id="json-output" class="output-area"></div>
+                <div class="editor-wrapper">
+                    <div class="line-numbers" id="output-line-numbers"></div>
+                    <div id="json-output" class="output-area"></div>
+                </div>
             </div>
         </div>
 
