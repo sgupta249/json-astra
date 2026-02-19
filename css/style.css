@@ -638,8 +638,8 @@ button {
 
 .footer-inner {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 1rem;
     padding-bottom: 1rem;
 }
 
