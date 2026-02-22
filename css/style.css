@@ -802,3 +802,35 @@ button {
         max-width: 100%;
     }
 }
+
+/* ── Footer contact email strip ────────────────────────────── */
+.footer-contact {
+    border-top: 1px solid var(--panel-border);
+    padding: 0.85rem 0 0.4rem;
+    text-align: center;
+}
+
+.footer-contact-msg {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-email-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    border-bottom: 1px dotted var(--accent-color);
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.footer-email-link:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+}
