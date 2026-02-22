@@ -834,3 +834,32 @@ button {
     color: #fff;
     border-bottom-color: #fff;
 }
+/* ── SEO info section ──────────────────────────────────────── */
+.seo-info {
+    max-width: 860px;
+    margin: 2rem auto 0;
+    padding: 1.25rem 1.5rem;
+    background: rgba(30, 41, 59, 0.45);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+}
+
+.seo-info h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.55rem;
+    letter-spacing: 0.01em;
+}
+
+.seo-info p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.seo-info code {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-color);
+    font-size: 0.8rem;
+}
