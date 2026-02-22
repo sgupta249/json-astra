@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const leftInput = document.getElementById('json-input-left');
     const rightInput = document.getElementById('json-input-right');
-    const leftOutput = document.getElementById('json-output-left');
     const rightOutput = document.getElementById('json-output');
     const leftLineNumbers = document.getElementById('left-line-numbers');
     const rightLineNumbers = document.getElementById('right-line-numbers');
     const compareBtn = document.getElementById('compare-btn');
+    const resetBtn = document.getElementById('reset-btn');
     const clearLeftBtn = document.getElementById('clear-left-btn');
     const clearRightBtn = document.getElementById('clear-right-btn');
     const copyBtn = document.getElementById('copy-btn');
@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLineNumbers(el, ln);
     });
 
-    leftOutput.addEventListener('scroll', () => { leftLineNumbers.scrollTop = leftOutput.scrollTop; });
     rightOutput.addEventListener('scroll', () => { rightLineNumbers.scrollTop = rightOutput.scrollTop; });
 
     // ── Toast ───────────────────────────────────────────────────────
@@ -74,16 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
     }
 
-    // ── Show diff in both panels ────────────────────────────────────
+    // ── Show diff in right panel only ───────────────────────────────
     function showDiff(leftLines, rightLines, identical) {
         const leftSet = new Set(leftLines.map(l => l.trim()));
-        const rightSet = new Set(rightLines.map(l => l.trim()));
-
-        // Left panel: highlight lines not present in right
-        leftInput.style.display = 'none';
-        leftOutput.innerHTML = buildDiffHTML(leftLines, rightSet, identical);
-        leftOutput.style.display = 'block';
-        leftLineNumbers.innerHTML = Array.from({ length: leftLines.length }, (_, i) => i + 1).join('<br>');
 
         // Right panel: highlight lines not present in left
         rightInput.style.display = 'none';
@@ -94,19 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Reset to input mode ─────────────────────────────────────────
     function resetView() {
-        leftOutput.style.display = 'none';
         rightOutput.style.display = 'none';
         leftInput.style.display = '';
         rightInput.style.display = '';
-        leftOutput.innerHTML = '';
         rightOutput.innerHTML = '';
         updateLineNumbers(leftInput, leftLineNumbers);
         updateLineNumbers(rightInput, rightLineNumbers);
     }
 
-    // Clicking on either output panel → back to edit mode
-    leftOutput.addEventListener('click', () => { resetView(); leftInput.focus(); });
+    // Clicking on right output panel → back to edit mode
     rightOutput.addEventListener('click', () => { resetView(); rightInput.focus(); });
+
+    resetBtn && resetBtn.addEventListener('click', resetView);
 
     clearLeftBtn.addEventListener('click', () => {
         leftInput.value = '';
