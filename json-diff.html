@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHG07DWSL8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-YHG07DWSL8');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Diff Online - Compare JSON Files Free | DailyAstra</title>
+    <meta name="description"
+        content="Compare two JSON objects instantly online. Find differences with red highlighting. Free, fast, no install needed.">
+    <meta name="keywords" content="JSON diff, JSON compare, compare JSON online, JSON difference, JSON tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dailyastra.com/json-diff.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dailyastra.com/json-diff.html">
+    <meta property="og:title" content="JSON Diff Online - Compare JSON Files Free">
+    <meta property="og:description" content="Compare two JSON objects instantly online to find differences.">
+    <meta property="og:site_name" content="DevUtils - DailyAstra">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JSON Diff Online - Compare JSON Files Free">
+    <meta name="twitter:description" content="Compare two JSON objects instantly online to find differences.">
+    <link rel="icon" type="image/png" href="favicon.png" sizes="48x48">
+    <link rel="stylesheet" href="css/style.css?v=1.1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "JSON Diff",
+      "url": "https://dailyastra.com/json-diff.html",
+      "description": "Free online tool to compare JSON objects and highlight differences.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+    <style>
+        /* Lines in the right output panel highlighted red for differences */
+        .diff-line-changed {
+            background-color: rgba(239, 68, 68, 0.18);
+            display: block;
+            width: 100%;
+            color: #f87171;
+        }
+
+        /* All lines green when both JSONs are identical */
+        .diff-line-identical {
+            background-color: rgba(16, 185, 129, 0.15);
+            display: block;
+            width: 100%;
+            color: #10b981;
+        }
+
+        .diff-line-normal {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+    </div>
+
+    <main class="container">
+        <nav class="site-nav">
+            <a href="index.html" class="nav-brand">
+                <img src="favicon.png" alt="DevUtils" width="32" height="32">
+            </a>
+            <div class="nav-divider"></div>
+
+            <div class="nav-group">
+                <button class="dropbtn">
+                    JSON
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
+                <div class="dropdown-content">
+                    <a href="json-beautifier.html">Beautifier</a>
+                    <a href="json-formatter.html">Formatter</a>
+                    <a href="json-escape.html">Escape</a>
+                    <a href="json-unescape.html">Unescape</a>
+                    <a href="json-diff.html" class="active">JSON Diff</a>
+                    <a href="json-xml.html">JSON to XML</a>
+                </div>
+            </div>
+
+            <div class="nav-divider"></div>
+
+            <div class="nav-group">
+                <button class="dropbtn">
+                    XML
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
+                <div class="dropdown-content">
+                    <a href="xml-json.html">XML to JSON</a>
+                </div>
+            </div>
+
+            <div class="nav-divider"></div>
+
+            <div class="nav-group">
+                <button class="dropbtn">
+                    Text
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
+                <div class="dropdown-content">
+                    <a href="txt-formatter.html">Text Formatter</a>
+                </div>
+            </div>
+
+            <div class="nav-divider"></div>
+
+            <div class="nav-group">
+                <button class="dropbtn">
+                    UUID
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
+                <div class="dropdown-content">
+                    <a href="uuid-generator.html">Generator</a>
+                    <a href="uuid-validator.html">Validator</a>
+                </div>
+            </div>
+        </nav>
+
+        <header>
+            <h1>JSON <span class="gradient-text">Diff</span></h1>
+            <p>Paste two JSON objects and compare — differences are highlighted in red.</p>
+        </header>
+
+        <div class="editor-container">
+            <!-- Left: Original JSON -->
+            <div class="panel input-panel">
+                <div class="panel-header">
+                    <span class="label">Original JSON</span>
+                    <div class="actions">
+                        <button id="clear-left-btn" class="icon-btn" title="Clear">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="editor-wrapper">
+                    <div class="line-numbers" id="left-line-numbers"></div>
+                    <textarea id="json-input-left" placeholder="Paste the original JSON here..."></textarea>
+                </div>
+            </div>
+
+            <!-- Middle: Compare button -->
+            <div class="controls">
+                <button id="compare-btn" class="primary-btn">
+                    Compare
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="18" r="3"></circle>
+                        <circle cx="6" cy="6" r="3"></circle>
+                        <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+                        <line x1="6" y1="9" x2="6" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="reset-btn" class="secondary-btn">
+                    Reset
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Right: Modified JSON result -->
+            <div class="panel output-panel">
+                <div class="panel-header">
+                    <span class="label">Modified JSON</span>
+                    <div class="actions">
+                        <button id="copy-btn" class="icon-btn" title="Copy to Clipboard">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <button id="clear-right-btn" class="icon-btn" title="Clear">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="editor-wrapper">
+                    <div class="line-numbers" id="right-line-numbers"></div>
+                    <!-- Textarea for input mode -->
+                    <textarea id="json-input-right" placeholder="Paste the modified JSON here..."></textarea>
+                    <!-- Output div for diff mode (hidden until Compare is clicked) -->
+                    <div id="json-output" class="output-area" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toast" class="toast hidden">Copied to clipboard!</div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <img src="favicon.png" alt="DevUtils">
+                    <span>DevUtils</span>
+                </a>
+                <p class="footer-tagline">Free, fast, and privacy-friendly developer utilities. No sign-up, no tracking,
+                    just tools that work.</p>
+                <div class="footer-social">
+                    <a href="https://dailyastra.com" target="_blank" rel="noopener" class="social-link" title="Website">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                            <path d="M2 12h20" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>JSON Tools</h4>
+                <ul class="footer-links">
+                    <li><a href="json-beautifier.html">JSON Beautifier</a></li>
+                    <li><a href="json-formatter.html">JSON Formatter</a></li>
+                    <li><a href="json-escape.html">JSON Escape</a></li>
+                    <li><a href="json-unescape.html">JSON Unescape</a></li>
+                    <li><a href="json-diff.html">JSON Diff</a></li>
+                    <li><a href="json-xml.html">JSON to XML</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>XML Tools</h4>
+                <ul class="footer-links">
+                    <li><a href="xml-json.html">XML to JSON</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Text Tools</h4>
+                <ul class="footer-links">
+                    <li><a href="txt-formatter.html">Text Formatter</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>UUID Tools</h4>
+                <ul class="footer-links">
+                    <li><a href="uuid-generator.html">UUID Generator</a></li>
+                    <li><a href="uuid-validator.html">UUID Validator</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2025 <span>DailyAstra</span>. All rights reserved.</p>
+            <div class="footer-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" />
+                </svg>
+                Made with love for developers
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/7.0.0/diff.min.js"></script>
+    <script src="js/json-diff.js?v=1.2"></script>
+</body>
+
+</html>
